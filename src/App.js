@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import OrderPage from './pages/OrderPage'
+import SummaryPage from './pages/SummaryPage'
+import CompletePage from './pages/CompletePage'
 
-function App() {
+const App = () => {
+  const [step, setStep] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: '4rem' }}>
+      {step === 0 ? <OrderPage setStep={setStep} /> : null}
+      {step === 1 ? <SummaryPage setStep={setStep} /> : null}
+      {step === 2 ? <CompletePage setStep={setStep} /> : null}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
